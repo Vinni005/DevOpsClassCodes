@@ -8,7 +8,7 @@ pipeline{
         stage('Checkout on git'){
             agent any
             steps{
-                git 'https://github.com/devops-trainer/DevOpsClassCodes.git'
+                git 'https://github.com/Vinni005/DevOpsClassCodes.git'
             }
         }
         stage('Compile'){
@@ -26,8 +26,8 @@ pipeline{
         stage('UnitTest'){
             agent {label 'win_slave'}
             steps{
-                git 'https://github.com/devops-trainer/DevOpsClassCodes.git'
-                bat 'mvn test'
+                git 'https://github.com/Vinni005/DevOpsClassCodes.git'
+                sh 'mvn test'
             }
         }
         stage('MetricCheck'){
@@ -39,7 +39,7 @@ pipeline{
         stage('Package'){
             agent{label 'win_slave'}
             steps{
-                bat 'mvn package'
+                sh 'mvn package'
             }
         }
     }
